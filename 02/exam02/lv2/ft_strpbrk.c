@@ -6,11 +6,11 @@
 /*   By: lelai <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 15:49:59 by lelai             #+#    #+#             */
-/*   Updated: 2025/03/28 15:58:52 by lelai            ###   ########.fr       */
+/*   Updated: 2025/03/31 15:52:29 by lelai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*strpbrk(const char *s, const char *charset)
+char	*strpbrk(const char *s1, const char *s2)
 {
 	int	i;
 	int	j;

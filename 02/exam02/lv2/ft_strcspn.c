@@ -6,7 +6,7 @@
 /*   By: lelai <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 15:59:07 by lelai             #+#    #+#             */
-/*   Updated: 2025/03/28 15:48:50 by lelai            ###   ########.fr       */
+/*   Updated: 2025/03/31 15:20:46 by lelai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ size_t	ft_strcspn(const char *s, const char *reject)
 	}
 	return (i);
 }
-/*
+
 #include <string.h>
 
 int	main(int ac, char **av)
@@ -40,4 +40,4 @@ int	main(int ac, char **av)
 		return (1);
 	printf("First occurrence of \"%s\" at index: %zu\n", av[2], strcspn(av[1], av[2]));
 	printf("My output check: %zu\n", ft_strcspn(av[1], av[2]));
-}*/
+}

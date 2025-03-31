@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_bits.c                                       :+:      :+:    :+:   */
+/*   reverse_bits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lelai <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/28 17:13:23 by lelai             #+#    #+#             */
-/*   Updated: 2025/03/31 19:12:43 by lelai            ###   ########.fr       */
+/*   Created: 2025/03/31 19:12:56 by lelai             #+#    #+#             */
+/*   Updated: 2025/03/31 19:17:05 by lelai            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	print_bits(unsigned char octet)
+unsigned char	reverse_bits(unsigned char octet)
 {
-	int	maxbits = 8;
-	unsigned char	bit;
-	
-	while (maxbits--)
+	unsigned int	i;
+	unsigned char	res = 0;
+
+	i = 8;
+	while (i--)
 	{
-		bit = (octet >> maxbits & 1) + '0';
-		write(1, &bit, 1);
+		res = (res << 1) | (octet & 1);
+		octet = octet >> 1;
 	}
+	return (res);
 }
