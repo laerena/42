@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lelai <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: leilai <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 16:33:22 by lelai             #+#    #+#             */
-/*   Updated: 2025/02/12 17:02:31 by lelai            ###   ########.fr       */
+/*   Created: 2025/10/29 17:56:10 by leilai            #+#    #+#             */
+/*   Updated: 2025/10/29 17:56:13 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	process_format(const char *format, va_list args, int *i, int *count)
 	}
 	else
 	{
-		result = ft_putchar_fd(format[*i], 1);
+		result = ft_putchar_fd(format[*i], 1); 
 		if (result == -1)
 			return (-1);
 		*count += result;

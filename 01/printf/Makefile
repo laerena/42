@@ -1,7 +1,7 @@
 NAME = libftprintf.a
 
-CC = cc
-CFLAGS = -Wall -Wextra -Werror -I ./
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 
 SRC = ft_printf.c ft_handlef.c ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_fd.c ft_putnbr_base.c ft_putptr.c ft_putuint_fd.c
 OBJ = $(SRC:.c=.o)

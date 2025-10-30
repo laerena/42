@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lelai <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: leilai <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/23 17:53:56 by lelai             #+#    #+#             */
-/*   Updated: 2024/11/29 01:27:49 by lelai            ###   ########.fr       */
+/*   Created: 2025/10/29 15:33:07 by leilai            #+#    #+#             */
+/*   Updated: 2025/10/29 17:31:30 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int				i;
+	size_t			i;
 	unsigned char	cc;
 
 	cc = (unsigned char)c;

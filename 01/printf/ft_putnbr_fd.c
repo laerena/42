@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lelai <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: leilai <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/06 16:50:15 by lelai             #+#    #+#             */
-/*   Updated: 2025/02/12 21:15:00 by lelai            ###   ########.fr       */
+/*   Created: 2025/10/29 17:57:15 by leilai            #+#    #+#             */
+/*   Updated: 2025/10/29 19:30:26 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	ft_putnbr_recursive(unsigned int n, int fd)
 			return (-1);
 		count += result;
 	}
-	c = (n % 10) + '0';
+	c = (n % 10) + '0'; 
 	result = ft_putchar_fd(c, fd);
 	if (result == -1)
 		return (-1);
