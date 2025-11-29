@@ -6,13 +6,14 @@
 /*   By: leilai <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 18:00:36 by leilai            #+#    #+#             */
-/*   Updated: 2025/11/28 00:36:30 by leilai           ###   ########.fr       */
+/*   Updated: 2025/11/29 18:32:17 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
 static char	*fill_line(int fd, char *leftover, char *buffer);
+static int	append_to_leftover(char **leftover, char *buffer);
 static char	*set_line(char *line);
 static char	*ft_strchr(char *s, int c);
 
@@ -65,7 +66,6 @@ static char	*set_line(char *line_buffer)
 static char	*fill_line(int fd, char *leftover, char *buffer)
 {
 	ssize_t	b_read;
-	char	*tmp;
 
 	while (1)
 	{
@@ -75,21 +75,36 @@ static char	*fill_line(int fd, char *leftover, char *buffer)
 		if (b_read == 0)
 			break ;
 		buffer[b_read] = '\0';
-		if (!leftover)
+		if (!append_to_leftover(&leftover, buffer))
 		{
-			leftover = ft_strdup("");
-			if (!leftover)
-				return (NULL);
-		}
-		tmp = leftover;
-		leftover = ft_strjoin(tmp, buffer);
-		free(tmp);
-		if (!leftover)
+			free(leftover);
 			return (NULL);
+		}
 		if (ft_strchr(buffer, '\n'))
 			break ;
 	}
 	return (leftover);
+}
+
+static int	append_to_leftover(char **leftover, char *buffer)
+{
+	char	*tmp;
+
+	if (!*leftover)
+	{
+		*leftover = ft_strdup("");
+		if (!*leftover)
+			return (0);
+	}
+	tmp = *leftover;
+	*leftover = ft_strjoin(tmp, buffer);
+	if (!*leftover)
+	{
+		free(tmp);
+		return (0);
+	}
+	free(tmp);
+	return (1);
 }
 
 static char	*ft_strchr(char *s, int c)

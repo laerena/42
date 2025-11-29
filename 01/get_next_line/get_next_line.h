@@ -6,14 +6,14 @@
 /*   By: leilai <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 18:00:49 by leilai            #+#    #+#             */
-/*   Updated: 2025/10/29 18:00:51 by leilai           ###   ########.fr       */
+/*   Updated: 2025/11/29 17:29:46 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE
+#  define BUFFER_SIZE 42
 # endif
 # include <stdlib.h>
 # include <unistd.h>
