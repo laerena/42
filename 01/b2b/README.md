@@ -52,14 +52,14 @@ AppArmor was chosen due to simpler configuration and readability.
 
 ---
 
-## UFW vs firewalld
+### UFW vs firewalld
 - **UFW**: simple, rule-based, easy to audit
 - **firewalld**: zone-based, more complex
 UFW was selected to reduce configuration complexity.
 
 ---
 
-## VirtualBox vs UTM
+### VirtualBox vs UTM
 - **VirtualBox**: cross-platform, widely used at 42
 - **UTM**: required for Apple Silicon
 
@@ -67,7 +67,7 @@ VirtualBox was used in this project.
 
 ---
 
-## Disk & Partitioning
+### Disk & Partitioning
 - Encrypted partitions using **LVM**
 - No graphical interface installed
 - Minimal services to reduce attack surface
@@ -77,16 +77,18 @@ VirtualBox was used in this project.
 ## Security Configuration
 
 ### Users & Groups
-- Root user ('leilai42')
-- Personal user ('leilai')
+The system includes:
+- Root user: 'leilai42'
+- Personal user: 'leilai'
 - Groups:
     - 'sudo'
     - 'user42'
 
-- bash
-    - getent group sudo
-    - getent group user42
-    - groups leilai
+```bash
+getent group sudo
+getent group user42
+groups leilai
+```
 
 ### Password Policy
 
