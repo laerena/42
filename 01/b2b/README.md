@@ -47,12 +47,24 @@ hostnamectl
 
 Debian was selected for clarity and ease of maintenance.
 
+```bash
+uname --kernel-version
+```
 
 ### AppArmor vs SELinux
 - **AppArmor (Debian)**: profile-based, easier to configure
 - **SELinux (Rocky)**: policy-based, more granular but complex
 
+AppArmor is a Mandatory Access Control system that restricts programs
+using per-application profiles, improving security by limiting access
+to system resources.
+
 AppArmor was chosen due to simpler configuration and readability.
+
+### apt vs aptitude
+- **apt**: a low-level package management tool focused on speed and simplicity.
+- **aptitude**: a higher-level front-end that can interactively resolve dependency
+conflicts by proposing multiple solutions.
 
 
 ### UFW vs firewalld
@@ -60,6 +72,11 @@ AppArmor was chosen due to simpler configuration and readability.
 - **firewalld**: zone-based, more complex
 
 UFW was selected to reduce configuration complexity.
+
+```bash
+dpkg -s ufw
+sudo service ufw status
+```
 
 
 ### VirtualBox vs UTM
@@ -76,6 +93,7 @@ VirtualBox was used in this project.
 
 ```bash
 lsblk
+ls /user/bin/*session
 ```
 
 ---
@@ -94,8 +112,18 @@ The system includes:
 getent group sudo
 getent group user42
 groups leilai
+sudo addgroup evaluating
+sudo adduser newuser
+sudo usermod newuser evaluating
+sudo deluser newuser evaluating
 ```
 
+```bash
+hostname
+sudo nano /etc/hostname
+sudo nano /etc/hosts
+sudo reboot
+```
 
 ### Password Policy
 
@@ -111,7 +139,6 @@ The following rules were applied:
 - No more than 3 consecutive identical characters
 - Root password follows the same policy
 
-Verification commands:
 ```bash
 sudo chage -l leilai
 sudo nano /etc/login.defs
@@ -121,7 +148,6 @@ sudo nano /etc/pam.d/common-password
 After configuring the password policy, all existing passwords were updated
 to ensure the rules were applied correctly.
 
-Changing password commands:
 ```bash
 passwd
 sudo passwd leilai
@@ -141,11 +167,12 @@ Applied rules:
 - **TTY mode** is enabled for security reasons
 - The PATH used by sudo is **restricted**
 
-Verification commands:
 ```bash
+which sudo
 sudo visudo
+nano /etc/sudoers.d/sudo_config 
 sudo -V
-ls /var/log/sudo/
+sudo ls /var/log/sudo/
 ```
 
 
@@ -159,19 +186,18 @@ Applied rules:
 - Only port **4242** is allowed
 - All other incoming connections are blocked
 
-Verification commands:
 ```bash
 sudo ufw status
 sudo ufw status verbose
 ```
 Port access is managed using UFW rules.
 
-Managing commands:
 ```bash
 sudo ufw allow 4242
 sudo ufw delete allow 4242
 sudo ufw enable
 sudo ufw disable
+sudo ufw delete num_rule
 sudo ufw status numbered
 ```
 
@@ -183,8 +209,8 @@ Root login via SSH is disabled for security reasons.
 
 SSH is also used to interact with the virtual machine from the host system.
 
-Verification command:
 ```bash
+sudo service ssh status
 sudo systemctl status ssh
 ssh leilai@localhost -p 4242
 ```
@@ -210,10 +236,10 @@ Displayed information includes:
 - Network IP and MAC address
 - Number of sudo commands executed
 
-Verification & Modification commands:
 ```bash
 sudo crontab -l
 sudo crontab -e
+sudo crontab -u root -e
 sudo systemctl status cron
 ```
 
@@ -249,3 +275,7 @@ concepts and command usage.
 
 No configuration files or scripts were copied.
 All implementations were written and configured manually.
+
+---
+
+#
