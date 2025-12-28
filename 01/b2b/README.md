@@ -78,11 +78,11 @@ VirtualBox was used in this project.
 
 ### Users & Groups
 The system includes:
-- Root user: 'leilai42'
-- Personal user: 'leilai'
+- Root user: `leilai42`
+- Personal user: `leilai`
 - Groups:
-    - 'sudo'
-    - 'user42'
+    - `sudo`
+    - `user42`
 
 ```bash
 getent group sudo
@@ -92,12 +92,26 @@ groups leilai
 
 ### Password Policy
 
-### Crontab
-- edit monitoring.sh
-    - sudo nano /home/leilai/monitoring.sh
-- edit file to introduce tasks to be run by cron
-    - sudo crontab -l
-    - sudo crontab -e
+## Monitoring Script
 
-- copy content from vm through terminal: 
-    - ssh leilai@localhost -p 4242
+A Bash script (`monitoring.sh`) was created to display system information automatically.
+
+The script runs every 10 minutes using `cron` and broadcasts information to all terminals using `wall`.
+
+Displayed information includes:
+- System architecture and kernel version
+- Physical and virtual CPU count
+- RAM usage and percentage
+- Disk usage and percentage
+- CPU load
+- Last reboot time
+- LVM usage status
+- Active TCP connections
+- Logged-in users
+- Network IP and MAC address
+- Number of sudo commands executed
+
+Verification command:
+```bash
+sudo crontab -l
+
