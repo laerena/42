@@ -113,7 +113,7 @@ getent group user42
 groups leilai
 sudo addgroup evaluating
 sudo adduser newuser
-sudo usermod newuser evaluating
+sudo usermod -aG evaluating newuser
 sudo deluser newuser evaluating
 ```
 
