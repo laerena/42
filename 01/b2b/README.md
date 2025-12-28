@@ -92,7 +92,7 @@ VirtualBox was used in this project.
 
 ```bash
 lsblk
-ls /user/bin/*session
+ls /usr/bin/*session
 ```
 
 ---
