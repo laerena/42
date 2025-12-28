@@ -30,7 +30,6 @@ The project introduces:
 **Cons**
 - Slightly older packages compared to rolling distributions
 
----
 
 ### Debian vs Rocky Linux
 | Debian | Rocky Linux |
@@ -42,7 +41,6 @@ The project introduces:
 
 Debian was selected for clarity and ease of maintenance.
 
----
 
 ### AppArmor vs SELinux
 - **AppArmor (Debian)**: profile-based, easier to configure
@@ -50,14 +48,12 @@ Debian was selected for clarity and ease of maintenance.
 
 AppArmor was chosen due to simpler configuration and readability.
 
----
 
 ### UFW vs firewalld
 - **UFW**: simple, rule-based, easy to audit
 - **firewalld**: zone-based, more complex
 UFW was selected to reduce configuration complexity.
 
----
 
 ### VirtualBox vs UTM
 - **VirtualBox**: cross-platform, widely used at 42
@@ -65,7 +61,6 @@ UFW was selected to reduce configuration complexity.
 
 VirtualBox was used in this project.
 
----
 
 ### Disk & Partitioning
 - Encrypted partitions using **LVM**
@@ -92,6 +87,25 @@ groups leilai
 
 ### Password Policy
 
+A strong password policy was implemented using PAM and login definitions.
+
+The following rules were applied:
+- Password expires every 30 days
+- Minimum of 2 days before a password can be changed
+- Warning message displayed 7 days before expiration
+- Minimum length of 10 characters
+- Must contain at least one uppercase letter, one lowercase letter, and one number
+- Must not contain the username
+- No more than 3 consecutive identical characters
+- Root password follows the same policy
+
+Verification commands:
+```bash
+sudo chage -l leilai
+sudo nano /etc/login.defs
+sudo nano /etc/pam.d/common-password
+```
+
 ## Monitoring Script
 
 A Bash script (`monitoring.sh`) was created to display system information automatically.
@@ -114,4 +128,19 @@ Displayed information includes:
 Verification command:
 ```bash
 sudo crontab -l
+```
+
+## SSH
+
+SSH is enabled on port **4242**.
+Root login via SSH is disabled for security reasons.
+
+SSH is also used to interact with the virtual machine from the host system.
+
+Verification command:
+```bash
+sudo systemctl status ssh
+ssh leilai@localhost -p 4242
+```
+
 
