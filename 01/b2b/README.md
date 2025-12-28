@@ -38,14 +38,12 @@ The project introduces:
 | Uses AppArmor | Uses SELinux |
 | Uses UFW | Uses firewalld |
 | Faster setup | Enterprise-oriented |
-
 Debian was selected for clarity and ease of maintenance.
 
 
 ### AppArmor vs SELinux
 - **AppArmor (Debian)**: profile-based, easier to configure
 - **SELinux (Rocky)**: policy-based, more granular but complex
-
 AppArmor was chosen due to simpler configuration and readability.
 
 
@@ -58,7 +56,6 @@ UFW was selected to reduce configuration complexity.
 ### VirtualBox vs UTM
 - **VirtualBox**: cross-platform, widely used at 42
 - **UTM**: required for Apple Silicon
-
 VirtualBox was used in this project.
 
 
