@@ -32,7 +32,6 @@ The project introduces:
 
 ```bash
 uname -a
-lsb_release -a
 hostnamectl
 ```
 
