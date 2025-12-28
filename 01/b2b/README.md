@@ -1,4 +1,4 @@
-**This project has been created as part of the 42 curriculum by leilai.**
+*This project has been created as part of the 42 curriculum by leilai.*
 
 # Born2BeRoot
 
@@ -169,7 +169,7 @@ Port access is managed using UFW rules.
 Managing commands:
 ```bash
 sudo ufw allow 4242
-sudo delete allow 4242
+sudo ufw delete allow 4242
 sudo ufw enable
 sudo ufw disable
 sudo ufw status numbered
