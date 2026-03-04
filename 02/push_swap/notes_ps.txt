@@ -1,0 +1,142 @@
+
+- algorithmic thinking
+	thinking in state transitions
+	optimizing cost of operations
+	designing strategies under constraints
+	choosing between multiple algorithmic approaches
+	measuring and tuning performance
+
+- operations
+	swap top 2
+		sa: swap top 2 numbers of stack A
+		sb: swap top 2 numbers of stack B
+		ss: do sa and sb
+
+	rotate (shift up)
+		ra: move the top of A to bottom
+		rb: move the top of B to bottom
+		rr: rotate both at once
+
+	push top number from one to another
+		pb: push top of A to top of B
+		pa: push top of B to top of A
+
+	reverse rotate (shift down)
+		rra: move the bottom of A to top
+		rrb: move the bottom of B to top
+		rrr: move the bottom of A&B to its top
+
+- operation design
+	clearly identify parts where:
+    	changing stacks in memory
+    	printing the instruction name
+	separate “state update” from “logging/serialization/output”
+
+- API
+	application programming interface: the public interface of your code
+    encapsulation
+        other files should only use what you explicitly allow
+        internal logic should be hidden
+
+- normalization:
+		replacing your numbers with their rank (their order position), without changing their relative order
+		sometimes changing representation simplifies the problem dramatically...
+		
+- radix: O(n log n)
+	sort numbers by looking at one digit at a time, from least important to most important
+	partitioning, not comparing
+	comparisons are expensive in stack world, partitioning is cheap
+
+	characteristics:
+	deterministic, mechanical, bit-based, O(n log n)
+	does NOT think about position.
+	does NOT try to minimize rotations.
+	does NOT use stack geometry.
+
+	algorithmically elegant, but not smart in movement optimization
+
+	operators for radix - binary operators
+	>>
+	(x >> k) move all bits of x to the right by k positions - sliding bits right, the rightmost bits fall off
+   		x = 101100
+    	x >> 1 = 010110
+    	x >> 2 = 001011
+	&
+	((...) & 1) extracts the last bit(the least significant bit)
+
+	eg. binary of 5 = 101
+		5 >> 1 = 101 -> 10 = 2 integer division by 2
+		5 >> 2 = 101 -> 1 = 1  integer division by 4
+		5 >> 3 = 0             integer division by 8
+		5 >> k				   integer division by 2^k
+		max >> bits is max / (2^bits)
+
+	((x >> k) & 1) check bit k
+
+	eg. 6 binary is 110
+    	((6 >> 0) & 1) = 0
+    	((6 >> 0) & 1) = 1
+    	((6 >> 0) & 1) = 1
+    	radix gets these and sorts
+
+	simulation of radix sort:
+		Top
+		3 (11)
+		1 (01)
+		2 (10)
+		0 (00)
+		Bottom
+	
+		pass 1
+	 1: a: 1 2 0 3 
+	 	b: empty
+	 2: a: 2 0 3 1
+	 	b: empty
+	 3: a: 0 3 1
+	 	b: 2
+	 4: a: 3 1
+	 	b: 2 0
+	 5: a: 2 0 3 1
+	 	b: empty
+		pass 2
+	 1: a: 0 3 1 2
+	 2: a: 3 1 2
+	 	b: 0
+	 3: a: 1 2 3
+	 	b: 0
+	 4: a: 2 3
+	 	b: 0 1
+	 5: a: 0 1 2 3
+
+- chunking
+	"heuristic divide-and-reassemble algorithm over a constrained state machine"
+
+	pushes values in controlled ranges
+	uses rotation direction to minimize moves
+	extracts largest values from B efficiently
+
+	filtering values: scan A in circles, everytime something in current chunk range, send to B
+
+
+- complexity
+	if I double the amount of data, how much more work do I have to do?
+	eg. O(n)       look at each number once
+    	O(n²)      for every number, compare it to every other number
+    	O(n log n) split the list in half, solve each half, then combine
+
+
+not important/required for this version of push_swap but interestingly:
+	- How messy is this list?
+		Disorder = mistakes / total relationships
+		eg. A = [1, 2, 3, 4] (perfect order)
+    		disorder = 0
+
+    		A = [4, 3, 2, 1] (worst order)
+    		disorder = 1
+
+    		A = [3, 1, 2]
+    		mistakes: 3 before 1, 3 before 2
+    		mistakes = 2
+    		possible comparisons = 3
+
+    		disorder = 2/3 ~= 0.66 (high)
