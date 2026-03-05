@@ -6,7 +6,7 @@
 /*   By: leilai <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 15:48:47 by leilai            #+#    #+#             */
-/*   Updated: 2026/03/04 16:31:45 by leilai           ###   ########.fr       */
+/*   Updated: 2026/03/05 14:33:57 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int		is_sorted(t_stack *a);
 // sorting
 void	normalize_stack(t_stack *a);
 void	sort_3(t_stack *a);
+int		pos_min(t_stack *a);
 void	pos_to_top(
 			t_stack *stack,
 			int pos,

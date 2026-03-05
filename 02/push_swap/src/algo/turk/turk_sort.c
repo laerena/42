@@ -26,29 +26,16 @@ static void	push_to_b(t_stack *a, t_stack *b)
 	}
 }
 
-int	pos_min(t_stack *a)
+void	turk_sort(t_stack *a, t_stack *b)
 {
-	t_node	*cur;
-	int		min;
-	int		pos;
-	int		i;
+	int	pos;
 
-	cur = a->top;
-	min = cur->index; //initialize: smallest index found so far
-	pos = 0;
-	i = 0;
-	//walk through the stack to find the smallest index and its position
-	while (cur)
-	{
-		if (cur->index < min)
-		{
-			min = cur->index;
-			pos = i;
-		}
-		cur = cur->next;
-		i++;
-	}
-	return (pos);
+	push_to_b(a, b);
+	sort_3(a);
+	while (b->size > 0)
+		turk_step(a, b);
+	pos = pos_min(a);
+	pos_to_top(a, pos, op_ra, op_rra);
 }
 
 /*

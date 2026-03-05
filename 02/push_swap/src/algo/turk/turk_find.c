@@ -40,11 +40,4 @@ static int	target_pos(t_stack *a, int idx)
 	return (pos_min(a));
 }
 
-// signed rotation cost: positive for rotate, negative for reverse r
-static int	rot_cost(int size, int pos)
-{
-	if (pos <= size / 2)
-		return (pos);
-	return (pos - size);
-}
 

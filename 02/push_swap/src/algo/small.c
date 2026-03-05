@@ -1,6 +1,23 @@
 #include "push_swap.h"
 
-static int	pos_min(t_stack *a)
+void	sort_3(t_stack *a)
+{
+	int	top;
+	int	mid;
+	int	bot;
+
+	top = a->top->index;
+	mid = a->top->next->index;
+	bot = a->top->next->next->index;
+	if (top > mid && top > bot)
+		op_ra(a);
+	else if (mid > top && mid > bot)
+		op_rra(a);
+	if (a->top->index > a->top->next->index)
+		op_sa(a);
+}
+
+int	pos_min(t_stack *a)
 {
 	t_node	*cur;
 	int		min;
@@ -23,23 +40,6 @@ static int	pos_min(t_stack *a)
 		i++;
 	}
 	return (pos);
-}
-
-void	sort_3(t_stack *a)
-{
-	int	top;
-	int	mid;
-	int	bot;
-
-	top = a->top->index;
-	mid = a->top->next->index;
-	bot = a->top->next->next->index;
-	if (top > mid && top > bot)
-		op_ra(a);
-	else if (mid > top && mid > bot)
-		op_rra(a);
-	if (a->top->index > a->top->next->index)
-		op_sa(a);
 }
 
 // bring position pos to the top using the cheapest direction
