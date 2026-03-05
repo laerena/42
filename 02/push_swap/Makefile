@@ -12,6 +12,9 @@ SRCS = $(SRCDIR)/main.c \
        $(SRCDIR)/algo/small.c \
        $(SRCDIR)/algo/basic/chunk.c \
        $(SRCDIR)/algo/basic/radix.c \
+       $(SRCDIR)/algo/turk/turk_find.c \
+       $(SRCDIR)/algo/turk/turk_cost.c \
+       $(SRCDIR)/algo/turk/turk_sort.c \
        $(SRCDIR)/helper/ft_split.c \
        $(SRCDIR)/ops/ops_push.c \
        $(SRCDIR)/ops/ops_revrot.c \
@@ -31,22 +34,24 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-%.o: %.c $(INCDIR)/push_swap.h
+%.o: %.c
 	$(CC) $(CFLAGS) -I$(INCDIR) -c $< -o $@
+
+turk:
+	$(MAKE) re NAME=push_swap_turk
+
+chunk:
+	$(MAKE) re NAME=push_swap_chunk CFLAGS="$(CFLAGS) -DUSE_CHUNK"
+
+radix:
+	$(MAKE) re NAME=push_swap_radix CFLAGS="$(CFLAGS) -DUSE_RADIX"
 
 clean:
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f push_swap push_swap_turk push_swap_chunk push_swap_radix
 
 re: fclean all
 
-.PHONY: all clean fclean re
-
-radix: re
-	mv push_swap push_swap_radix
-
-chunk:
-	$(MAKE) re CFLAGS="$(CFLAGS) -DUSE_CHUNK"
-	mv push_swap push_swap_chunk
+.PHONY: all clean fclean re turk chunk radix

@@ -6,15 +6,15 @@
 /*   By: leilai <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 15:48:47 by leilai            #+#    #+#             */
-/*   Updated: 2026/03/05 14:33:57 by leilai           ###   ########.fr       */
+/*   Updated: 2026/03/05 16:22:09 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdlib.h>
-#include <unistd.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 // data structures
 // one element of the stack: one number + link to the next
@@ -81,5 +81,6 @@ void	pos_to_top(
 void	small_sort(t_stack *a, t_stack *b);
 void	chunk_sort(t_stack *a, t_stack *b);
 void	radix_sort(t_stack *a, t_stack *b);
+void	turk_sort(t_stack *a, t_stack *b);
 
 #endif

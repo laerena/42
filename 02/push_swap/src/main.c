@@ -28,12 +28,14 @@ int	main(int ac, char **av)
 		small_sort(a, b);
 	else
 	{
-	#ifdef USE_CHUNK
-		chunk_sort(a, b);
-	#else
-		radix_sort(a, b);
-	#endif
-	}
+#if defined(USE_CHUNK)
+	chunk_sort(a, b);
+#elif defined(USE_RADIX)
+	radix_sort(a, b);
+#else
+	turk_sort(a, b); //default
+#endif
+}
 
 	// cleanup
 	stack_clear(a);

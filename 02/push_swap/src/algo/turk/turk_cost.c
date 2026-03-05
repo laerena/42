@@ -1,4 +1,5 @@
 #include "push_swap.h"
+#include "turk.h"
 
 static int	iabs(int x)
 {
@@ -8,11 +9,11 @@ static int	iabs(int x)
 }
 
 /*
-**signed rotation cost: positive for rotate, negative for reverse r
+** signed rotation cost: positive for rotate, negative for reverse r
 ** +k  => rotate k times (ra/rb)
 ** -k  => reverse rotate k times (rra/rrb)
 */
-static int	rot_cost(int size, int pos)
+int	rot_cost(int size, int pos)
 {
 	if (pos <= size / 2)
 		return (pos);
@@ -31,30 +32,38 @@ int	total_cost(int ca, int cb)
 	return (iabs(ca) + iabs(cb));
 }
 
-/*
-** perform combined rotations on both stacks first
-** then finish remaining
-*/
-void	perform(t_stack *a, t_stack *b, int ca, int cb)
+void	turk_step(t_stack *a, t_stack *b)
 {
-	while (ca > 0 && cb > 0) //rotate both up
+	t_node	*cur;
+	t_move	move;
+	int		i;
+	int		ca;
+	int		cb;
+
+	cur = b->top;
+	move.total = 2147483647;
+	i = 0;
+	while (cur)
 	{
-		op_rr(a, b);
-		ca--;
-		cb--;
+		/*
+		** Compute where this element should be inserted into A,
+		** then compute cost to rotate A to that position.
+		*/
+		ca = rot_cost(a->size, target_pos(a, cur->index));
+		cb = rot_cost(b->size, i);
+		/*
+		** If this candidate is cheaper than the best so far,
+		** save its costs in move.
+		*/
+		if (total_cost(ca, cb) < move.total)
+		{
+			move.total = total_cost(ca, cb);
+			move.ca = ca;
+			move.cb = cb;
+		}
+		i++;
+		cur = cur->next;
 	}
-	while (ca < 0 && cb < 0) //rotate both down
-	{
-		op_rrr(a, b);
-		ca++;
-		cb++;
-	}
-	while (ca-- > 0)
-		op_ra(a);
-	while (ca++ < 0)
-		op_rra(a);
-	while (cb-- > 0)
-		op_rb(b);
-	while (cb++ < 0)
-		op_rrb(b);
+	perform(a, b, move.ca, move.cb);
+	op_pa(a, b);
 }
