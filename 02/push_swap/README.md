@@ -5,14 +5,17 @@
 ## Description
 
 **push_swap** is a program that sorts a list of integers using two stacks and a limited set of operations.  
+
 The challenge is not simply to sort the numbers, but to do so **using the fewest possible operations** while respecting strict constraints on how the stacks can be manipulated.
 
 This project focuses on:
 - Algorithmic thinking
 - Optimization
-- System esign under constraints
+- System design under constraints
+
 
 ---
+
 
 ## Project Overview
 
@@ -68,7 +71,7 @@ This transformation simplifies the problem by converting arbitrary integers into
 
 Normalization also makes later algorithms easier to implement.
 
----
+
 
 ## Algorithms Implemented
 
@@ -124,7 +127,9 @@ It works well for medium-sized inputs.
 
 ### Turk Sort (Cost-Based Greedy Algorithm)
 
-The Turk method uses a **cost calculation strategy** to determine the best move at each step.
+The **final version of this push_swap** uses this algorithm.
+
+**cost calculation strategy**
 
 A greedy algorithm always chooses the **best immediate move** according to a defined cost function, without attempting to compute a full optimal solution for the entire problem.
 
