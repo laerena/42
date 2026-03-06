@@ -2,10 +2,15 @@
 
 # Push_Swap
 
+## Description
+
 **push_swap** is a program that sorts a list of integers using two stacks and a limited set of operations.  
 The challenge is not simply to sort the numbers, but to do so **using the fewest possible operations** while respecting strict constraints on how the stacks can be manipulated.
 
-This project focuses on **algorithmic thinking, optimization, and system design under constraints**.
+This project focuses on:
+- Algorithmic thinking
+- Optimization
+- System esign under constraints
 
 ---
 
@@ -27,28 +32,28 @@ The following operations manipulate the stacks:
 
 #### Swap
 Swap the first two elements of a stack.
-- sa – swap top two of A
-- sb – swap top two of B
-- ss – sa and sb at the same time
+- `sa` – swap top two of A
+- `sb` – swap top two of B
+- `ss` – sa and sb at the same time
 
 #### Push
 Move the top element from one stack to the other.
-- pa – push top of B to A
-- pb – push top of A to B
+- `pa` – push top of B to A
+- `pb` – push top of A to B
 
 
 #### Rotate
 Shift all elements up by one.
-- ra – rotate A
-- rb – rotate B
-- rr – rotate A and B
+- `ra` – rotate A
+- `rb` – rotate B
+- `rr` – rotate A and B
 
 
 #### Reverse Rotate
 Shift all elements down by one.
-- rra – reverse rotate A
-- rrb – reverse rotate B
-- rrr – reverse rotate A and B
+- `rra` – reverse rotate A
+- `rrb` – reverse rotate B
+- `rrr` – reverse rotate A and B
 
 Each instruction must be printed exactly once per line.
 
@@ -59,14 +64,9 @@ Before sorting begins, the input values are **normalized**.
 
 Normalization replaces each number with its **rank in the sorted order**, while preserving the relative ordering of values.
 
-Example:
-- Input: [-42, 100, 7]
-- Sorted: [-42, 7, 100]
-- Normalized: -42 -> 0, 7 -> 1, 100 -> 2
-
 This transformation simplifies the problem by converting arbitrary integers into a predictable range `[0..n-1]`.
 
-Normalization also makes algorithms like **radix sort** easier to implement.
+Normalization also makes later algorithms easier to implement.
 
 ---
 
@@ -81,14 +81,13 @@ For very small inputs (≤5 numbers), specialized logic is used.
 These cases are solved using deterministic patterns that produce the minimum possible number of operations.
 
 
-
 ### Radix Sort
 
 Radix sort is a **bitwise sorting algorithm** that processes numbers digit by digit.
 
 Instead of comparing values, it partitions numbers based on the value of individual bits.
 
-Radix sort characteristics:
+Characteristics:
 
 - deterministic
 - mechanical
@@ -98,17 +97,10 @@ Radix sort characteristics:
 Bit operations used:
 - x >> k - shift bits right by k positions
 - (x >> k) & 1 - extract bit k
-	
-	Example:
-	- 6 = 110 (binary)
-	- ((6 >> 0) & 1) = 0
-	- ((6 >> 1) & 1) = 1
-	- ((6 >> 2) & 1) = 1
 
 Radix repeatedly partitions values between stacks A and B based on these bits until the numbers become sorted.
 
 Radix is algorithmically elegant but **does not optimize stack movement**.
-
 
 
 ### Chunk Sort
@@ -127,12 +119,16 @@ The algorithm works in two phases:
 This approach is a heuristic strategy that balances simplicity and performance.
 
 It works well for medium-sized inputs.
+- time complexity: **O(n^2)** (worst case)
 
 
-
-### Turk Algorithm (Cost-Based)
+### Turk Sort (Cost-Based Greedy Algorithm)
 
 The Turk method uses a **cost calculation strategy** to determine the best move at each step.
+
+A greedy algorithm always chooses the **best immediate move** according to a defined cost function, without attempting to compute a full optimal solution for the entire problem.
+
+In this implementation, each element in stack **B** is evaluated to determine the cost required to insert it into the correct position in stack **A**.
 
 For every element in stack B:
 
@@ -178,7 +174,6 @@ Each operation performs two tasks:
 Separating state changes from output makes the implementation easier to maintain and test.
 
 
-
 #### Encapsulation and API Design
 
 The project follows basic API design principles:
@@ -217,6 +212,8 @@ Through this project I focused on developing several core programming skills.
 
 - simplifying problems through normalization
 - using bitwise operations to implement radix sort
+- reduce disorder gradually through chunk sort 
+- greedy cost algo through turk sort
 
 Overall, this project reinforced the importance of **thinking about algorithms not only in terms of correctness, but also efficiency and system design**.
 
