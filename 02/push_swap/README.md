@@ -112,11 +112,11 @@ Chunk sorting divides the input into **ranges (chunks)** of values.
 
 The algorithm works in two phases:
 
-1. **Push Phase**
+1. Push Phase
    - Numbers belonging to the current chunk are pushed from A to B.
    - Rotations help reduce unnecessary moves.
 
-2. **Rebuild Phase**
+2. Rebuild Phase
    - The largest numbers are extracted from B and pushed back to A.
 
 This approach is a heuristic strategy that balances simplicity and performance.
