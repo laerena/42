@@ -19,21 +19,21 @@ This project focuses on:
 ## Instructions:
 
 To compile the project, run: 
-`make`
+- `make`
 This will build the push_swap executable using the default algorithm configuration.
 
 To run the program, provide a list of integers as arguments:
-`./push_swap 4 2 7 1 3`
+- `./push_swap 4 2 7 1 3`
 The program will output a sequence of stack operations that sorts the input numbers in ascending order.
 
 To verify the correctness of the output, pipe the instructions into the checker:
-`./push_swap 4 2 7 1 3 | ./checker 4 2 7 1 3`
+- `./push_swap 4 2 7 1 3 | ./checker 4 2 7 1 3`
 Expected output:
-`OK`
+- `OK`
 
 OR
-run `./tests/test_turk.sh
-`make fclean`
+run 
+- `./tests/test_turk.sh`
 
 ---
 
