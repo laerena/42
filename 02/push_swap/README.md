@@ -28,28 +28,28 @@ The following operations manipulate the stacks:
 
 ### Swap
 Swap the first two elements of a stack.
-	sa – swap top two of A
-	sb – swap top two of B
-	ss – sa and sb at the same time
+- sa – swap top two of A
+- sb – swap top two of B
+- ss – sa and sb at the same time
 
 ### Push
 Move the top element from one stack to the other.
-	pa – push top of B to A
-	pb – push top of A to B
+- pa – push top of B to A
+- pb – push top of A to B
 
 
 ### Rotate
 Shift all elements up by one.
-	ra – rotate A
-	rb – rotate B
-	rr – rotate A and B
+- ra – rotate A
+- rb – rotate B
+- rr – rotate A and B
 
 
 ### Reverse Rotate
 Shift all elements down by one.
-	rra – reverse rotate A
-	rrb – reverse rotate B
-	rrr – reverse rotate A and B
+- rra – reverse rotate A
+- rrb – reverse rotate B
+- rrr – reverse rotate A and B
 
 Each instruction must be printed exactly once per line.
 
@@ -62,9 +62,9 @@ Before sorting begins, the input values are **normalized**.
 Normalization replaces each number with its **rank in the sorted order**, while preserving the relative ordering of values.
 
 Example:
-	Input: [-42, 100, 7]
-	Sorted: [-42, 7, 100]
-	Normalized: -42 -> 0, 7 -> 1, 100 -> 2
+- Input: [-42, 100, 7]
+- Sorted: [-42, 7, 100]
+- Normalized: -42 -> 0, 7 -> 1, 100 -> 2
 
 
 This transformation simplifies the problem by converting arbitrary integers into a predictable range `[0..n-1]`.
@@ -99,14 +99,14 @@ Radix sort characteristics:
 - time complexity: **O(n log n)**
 
 Bit operations used:
-	x >> k shift bits right by k positions
-	(x >> k) & 1 extract bit k
+- x >> k - shift bits right by k positions
+- (x >> k) & 1 - extract bit k
 	
 	Example:
-		6 = 110 (binary)
-		((6 >> 0) & 1) = 0
-		((6 >> 1) & 1) = 1
-		((6 >> 2) & 1) = 1
+	- 6 = 110 (binary)
+	- ((6 >> 0) & 1) = 0
+	- ((6 >> 1) & 1) = 1
+	- ((6 >> 2) & 1) = 1
 
 Radix repeatedly partitions values between stacks A and B based on these bits until the numbers become sorted.
 
@@ -159,9 +159,9 @@ Characteristics:
 Algorithm performance is typically described using **Big-O notation**.
 
 Examples:
-	O(n) – process each element once
-	O(n²) – compare every element to every other element
-	O(n log n) – divide and conquer style growth
+- O(n) – process each element once
+- O(n²) – compare every element to every other element
+- O(n log n) – divide and conquer style growth
 
 For push_swap, complexity is slightly less important than **the number of operations generated**, since the program’s output length is what is evaluated.
 
