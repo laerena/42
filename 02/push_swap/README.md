@@ -61,10 +61,9 @@ Shift all elements down by one.
 
 Each instruction must be printed exactly once per line.
 
+---
 
 ## Input Normalization
-
-Before sorting begins, the input values are **normalized**.
 
 Normalization replaces each number with its **rank in the sorted order**, preserving the relative ordering of values.
 
