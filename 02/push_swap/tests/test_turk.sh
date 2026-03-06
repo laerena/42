@@ -14,8 +14,11 @@ if [ ! -x ./push_swap ]; then
     exit 1
 fi
 
-# Generate random input (macOS)
-ARG=$(jot $RANGE 0 | sort -R | head -n $SIZE | tr '\n' ' ')
+if command -v jot >/dev/null 2>&1; then
+    ARG=$(jot $RANGE 0 | sort -R | head -n $SIZE | tr '\n' ' ')
+else
+    ARG=$(shuf -i 0-$RANGE -n $SIZE | tr '\n' ' ')
+fi
 
 echo "Input size: $SIZE"
 echo "---------------------"
