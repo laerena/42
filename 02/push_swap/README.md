@@ -7,9 +7,8 @@ The challenge is not simply to sort the numbers, but to do so **using the fewest
 
 This project focuses on **algorithmic thinking, optimization, and system design under constraints**.
 
----
 
-# Project Overview
+## Project Overview
 
 The program receives a list of integers as arguments and outputs a sequence of instructions that will sort the numbers in ascending order.
 
@@ -22,30 +21,30 @@ The goal is to transform stack A into a sorted stack using only a restricted set
 
 ---
 
-# Allowed Operations
+## Allowed Operations
 
 The following operations manipulate the stacks:
 
-### Swap
+#### Swap
 Swap the first two elements of a stack.
 - sa – swap top two of A
 - sb – swap top two of B
 - ss – sa and sb at the same time
 
-### Push
+#### Push
 Move the top element from one stack to the other.
 - pa – push top of B to A
 - pb – push top of A to B
 
 
-### Rotate
+#### Rotate
 Shift all elements up by one.
 - ra – rotate A
 - rb – rotate B
 - rr – rotate A and B
 
 
-### Reverse Rotate
+#### Reverse Rotate
 Shift all elements down by one.
 - rra – reverse rotate A
 - rrb – reverse rotate B
@@ -55,7 +54,7 @@ Each instruction must be printed exactly once per line.
 
 ---
 
-# Input Normalization
+## Input Normalization
 
 Before sorting begins, the input values are **normalized**.
 
@@ -73,11 +72,11 @@ Normalization also makes algorithms like **radix sort** easier to implement.
 
 ---
 
-# Algorithms Implemented
+## Algorithms Implemented
 
 This project explores multiple algorithmic approaches to the push_swap problem.
 
-## Small Input Sort
+### Small Input Sort
 
 For very small inputs (≤5 numbers), specialized logic is used.
 
@@ -85,7 +84,7 @@ These cases are solved using deterministic patterns that produce the minimum pos
 
 ---
 
-## Radix Sort
+### Radix Sort
 
 Radix sort is a **bitwise sorting algorithm** that processes numbers digit by digit.
 
@@ -114,7 +113,7 @@ Radix is algorithmically elegant but **does not optimize stack movement**.
 
 ---
 
-## Chunk Sorting
+### Chunk Sorting
 
 Chunk sorting divides the input into **ranges (chunks)** of values.
 
@@ -133,7 +132,7 @@ It works well for medium-sized inputs.
 
 ---
 
-## Turk Algorithm (Cost-Based Greedy)
+### Turk Algorithm (Cost-Based Greedy)
 
 The Turk method uses a **cost calculation strategy** to determine the best move at each step.
 
@@ -154,7 +153,7 @@ Characteristics:
 
 ---
 
-# Complexity
+## Complexity
 
 Algorithm performance is typically described using **Big-O notation**.
 
@@ -167,11 +166,11 @@ For push_swap, complexity is slightly less important than **the number of operat
 
 ---
 
-# Program Architecture
+## Program Architecture
 
 The project is organized around clear separation of responsibilities.
 
-### Stack Operations
+#### Stack Operations
 
 Each operation performs two tasks:
 
@@ -182,7 +181,7 @@ Separating state changes from output makes the implementation easier to maintain
 
 ---
 
-### Encapsulation and API Design
+#### Encapsulation and API Design
 
 The project follows basic API design principles:
 
@@ -194,29 +193,29 @@ This improves modularity and prevents unintended dependencies.
 
 ---
 
-# Learning Objectives
+## Learning Objectives
 
 Through this project I focused on developing several core programming skills.
 
-### Algorithmic Thinking
+#### Algorithmic Thinking
 
 - reasoning about state transitions
 - designing strategies under constraints
 - comparing multiple algorithmic approaches
 
-### Performance Optimization
+#### Performance Optimization
 
 - minimizing operation count
 - measuring algorithm efficiency
 - tuning heuristics to reduce moves
 
-### Systems Design
+#### Systems Design
 
 - designing clear APIs
 - separating internal logic from output
 - organizing code into maintainable modules
 
-### Data Representation
+#### Data Representation
 
 - simplifying problems through normalization
 - using bitwise operations to implement radix sort
@@ -225,7 +224,7 @@ Overall, this project reinforced the importance of **thinking about algorithms n
 
 ---
 
-# AI Usage
+## AI Usage
 
 AI tools were used as a learning aid for:
 
