@@ -77,14 +77,14 @@ This also makes later algorithms easier to implement.
 
 This project explores multiple algorithmic approaches to the push_swap problem.
 
-### Small Sort
+## Small Sort
 
 For very small inputs (≤5 numbers), specialized logic is used.
 
 These cases are solved using deterministic patterns that produce the minimum possible number of operations.
 
 
-### Radix Sort
+## Radix Sort
 
 Radix sort is a **bitwise sorting algorithm** that processes numbers digit by digit.
 
@@ -106,7 +106,7 @@ Radix repeatedly partitions values between stacks A and B based on these bits un
 Radix is algorithmically elegant but **does not optimize stack movement**.
 
 
-### Chunk Sort
+## Chunk Sort
 
 Chunk sorting divides the input into **ranges (chunks)** of values.
 
@@ -125,13 +125,11 @@ It works well for medium-sized inputs.
 - time complexity: **O(n^2)** (worst case)
 
 
-### Turk Sort (Cost-Based Greedy Algorithm)
+## Turk Sort (Cost-Based Greedy Algorithm)
 
 The **final version of this push_swap** uses this algorithm.
 
 A greedy algorithm always chooses the **best immediate move** according to a defined cost function, without attempting to compute a full optimal solution for the entire problem.
-
-In this implementation, each element in stack **B** is evaluated to determine the cost required to insert it into the correct position in stack **A**.
 
 For every element in stack B:
 
@@ -217,9 +215,6 @@ Through this project I focused on developing several core programming skills.
 - using bitwise operations to implement radix sort
 - reduce disorder gradually through chunk sort 
 - greedy cost algo through turk sort
-
-Overall, this project reinforced the importance of 
-**thinking about algorithms not only in terms of correctness, but also efficiency and system design**.
 
 ---
 
