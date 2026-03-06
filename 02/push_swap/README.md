@@ -129,8 +129,6 @@ It works well for medium-sized inputs.
 
 The **final version of this push_swap** uses this algorithm.
 
-**cost calculation strategy**
-
 A greedy algorithm always chooses the **best immediate move** according to a defined cost function, without attempting to compute a full optimal solution for the entire problem.
 
 In this implementation, each element in stack **B** is evaluated to determine the cost required to insert it into the correct position in stack **A**.
@@ -220,7 +218,8 @@ Through this project I focused on developing several core programming skills.
 - reduce disorder gradually through chunk sort 
 - greedy cost algo through turk sort
 
-Overall, this project reinforced the importance of **thinking about algorithms not only in terms of correctness, but also efficiency and system design**.
+Overall, this project reinforced the importance of 
+**thinking about algorithms not only in terms of correctness, but also efficiency and system design**.
 
 ---
 
