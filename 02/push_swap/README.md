@@ -1,12 +1,13 @@
-# push_swap
+*This project has been created as part of the 42 curriculum by leilai.*
 
-*This project is part of the 42 curriculum.*
+# Push_Swap
 
-push_swap is a program that sorts a list of integers using two stacks and a limited set of operations.  
+**push_swap** is a program that sorts a list of integers using two stacks and a limited set of operations.  
 The challenge is not simply to sort the numbers, but to do so **using the fewest possible operations** while respecting strict constraints on how the stacks can be manipulated.
 
 This project focuses on **algorithmic thinking, optimization, and system design under constraints**.
 
+---
 
 ## Project Overview
 
@@ -19,7 +20,6 @@ Two stacks are used:
 
 The goal is to transform stack A into a sorted stack using only a restricted set of operations.
 
----
 
 ## Allowed Operations
 
@@ -52,7 +52,6 @@ Shift all elements down by one.
 
 Each instruction must be printed exactly once per line.
 
----
 
 ## Input Normalization
 
@@ -65,7 +64,6 @@ Example:
 - Sorted: [-42, 7, 100]
 - Normalized: -42 -> 0, 7 -> 1, 100 -> 2
 
-
 This transformation simplifies the problem by converting arbitrary integers into a predictable range `[0..n-1]`.
 
 Normalization also makes algorithms like **radix sort** easier to implement.
@@ -76,13 +74,13 @@ Normalization also makes algorithms like **radix sort** easier to implement.
 
 This project explores multiple algorithmic approaches to the push_swap problem.
 
-### Small Input Sort
+### Small Sort
 
 For very small inputs (≤5 numbers), specialized logic is used.
 
 These cases are solved using deterministic patterns that produce the minimum possible number of operations.
 
----
+
 
 ### Radix Sort
 
@@ -111,9 +109,9 @@ Radix repeatedly partitions values between stacks A and B based on these bits un
 
 Radix is algorithmically elegant but **does not optimize stack movement**.
 
----
 
-### Chunk Sorting
+
+### Chunk Sort
 
 Chunk sorting divides the input into **ranges (chunks)** of values.
 
@@ -130,9 +128,9 @@ This approach is a heuristic strategy that balances simplicity and performance.
 
 It works well for medium-sized inputs.
 
----
 
-### Turk Algorithm (Cost-Based Greedy)
+
+### Turk Algorithm (Cost-Based)
 
 The Turk method uses a **cost calculation strategy** to determine the best move at each step.
 
@@ -179,7 +177,7 @@ Each operation performs two tasks:
 
 Separating state changes from output makes the implementation easier to maintain and test.
 
----
+
 
 #### Encapsulation and API Design
 
