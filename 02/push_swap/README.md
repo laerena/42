@@ -23,8 +23,8 @@ The program receives a list of integers as arguments and outputs a sequence of i
 
 Two stacks are used:
 
-- **Stack A** – initially contains all numbers
-- **Stack B** – initially empty
+- `stack A` – initially contains all numbers
+- `stack B` – initially empty
 
 The goal is to transform stack A into a sorted stack using only a restricted set of operations.
 
@@ -65,13 +65,13 @@ Each instruction must be printed exactly once per line.
 
 Before sorting begins, the input values are **normalized**.
 
-Normalization replaces each number with its **rank in the sorted order**, while preserving the relative ordering of values.
+Normalization replaces each number with its **rank in the sorted order**, preserving the relative ordering of values.
 
 This transformation simplifies the problem by converting arbitrary integers into a predictable range `[0..n-1]`.
 
-Normalization also makes later algorithms easier to implement.
+This also makes later algorithms easier to implement.
 
-
+---
 
 ## Algorithms Implemented
 
