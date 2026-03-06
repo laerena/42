@@ -28,6 +28,7 @@ Two stacks are used:
 
 The goal is to transform stack A into a sorted stack using only a restricted set of operations.
 
+---
 
 ## Allowed Operations
 
