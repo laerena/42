@@ -17,6 +17,4 @@ Fork:
 ```C
 pid_t pid = fork();
 ```
-![alt text](image.png)
-to
 ![alt text](image-1.png)
