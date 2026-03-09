@@ -15,6 +15,18 @@ int main()
 	if (pid == 0)
 	{
 		//child
-		close(pid[0]); //child won't read
+		close(pfd[0]); //child won't read
+		write (pfd[1], "message from child", 18);
+		close(pfd[1]);
+	}
+	else
+	{
+		//parent
+		close(pfd[1]); //parent won't write
+		n = read(pfd[0], buffer, 99);
+		buffer[n] = '\0';
+		printf("Parent received: %s\n", buffer);
+		close(pfd[0]);
+		wait(NULL); //wait for child to finish
 	}
 }
