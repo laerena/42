@@ -11,22 +11,22 @@ int main()
 
 	pipe(pfd);
 	pid = fork();
-
 	if (pid == 0)
 	{
-		//child
-		close(pfd[0]); //child won't read
-		write (pfd[1], "message from child", 18);
+		close(pfd[0]);
+		dup2(pfd[1], STDOUT_FILENO);
 		close(pfd[1]);
+
+		write(STDOUT_FILENO, "hello through stdout\n", 21);
 	}
 	else
 	{
-		//parent
-		close(pfd[1]); //parent won't write
+		close(pfd[1]);
 		n = read(pfd[0], buffer, 99);
 		buffer[n] = '\0';
-		printf("Parent received: %s\n", buffer);
+		printf("Parent read: %s\n", buffer);
 		close(pfd[0]);
-		wait(NULL); //wait for child to finish
+		wait(NULL);
 	}
+	return (0);
 }

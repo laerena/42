@@ -18,3 +18,5 @@ Fork:
 pid_t pid = fork();
 ```
 ![alt text](image-1.png)
+
+parent & child with the same underlying pipe
