@@ -19,7 +19,9 @@ This project focuses on:
 ## Instructions:
 
 To compile the project, run: 
-- `make`
+```C
+make
+```
 This will build the push_swap executable using the default algorithm configuration.
 
 To run the program, provide a list of integers as arguments:
