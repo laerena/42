@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leilai <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/06 16:38:12 by leilai            #+#    #+#             */
-/*   Updated: 2026/03/10 18:41:14 by leilai           ###   ########.fr       */
+/*   Created: 2026/03/09 19:01:41 by leilai            #+#    #+#             */
+/*   Updated: 2026/03/09 19:05:40 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include <unistd.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <stdlib.h>
 
-void	error_exit(void)
+int	main(int ac, char **av, char **envp)
 {
-	write(2, "Error\n", 6);
-	exit(1);
+	if (ac == 5)
+	{
+		write(2, "Usage: ./pipex file1 cmd1 cmd2 file2\n", 38);
+		return (1);
+	}
+	return (0);
 }

@@ -6,11 +6,17 @@
 /*   By: leilai <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/12 11:34:46 by leilai            #+#    #+#             */
-/*   Updated: 2026/03/04 18:47:18 by leilai           ###   ########.fr       */
+/*   Updated: 2026/03/06 16:54:25 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+/*
+** . used when you have the actual struct 
+*** (access a field inside a struct value)
+** -> used when you have a pointer to a struct 
+*** (follow the pointer to the struct, then access its field)
+*/
 
 /*
 ** free all nodes in the stack, then free the stack itself
@@ -31,13 +37,6 @@ void	stack_clear(t_stack *stack)
 	}
 	free(stack);
 }
-
-/*
-** . used when you have the actual struct 
-*** (access a field inside a struct value)
-** -> used when you have a pointer to a struct 
-*** (follow the pointer to the struct, then access its field)
-*/
 
 /*
 ** allocate and initialize an empty stack

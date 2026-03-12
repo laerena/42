@@ -6,7 +6,7 @@
 /*   By: leilai <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/06 16:37:12 by leilai            #+#    #+#             */
-/*   Updated: 2026/03/06 16:37:13 by leilai           ###   ########.fr       */
+/*   Updated: 2026/03/10 19:50:36 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ static int	find_index(int *sorted, int n, int value)
 ** store it into node->index
 */
 
-static void	apply_normalization(t_stack *a, int *sorted, int n)
+static int	apply_normalization(t_stack *a, int *sorted, int n)
 {
 	t_node	*cur;
 
@@ -92,9 +92,10 @@ static void	apply_normalization(t_stack *a, int *sorted, int n)
 	{
 		cur->index = find_index(sorted, n, cur->value);
 		if (cur->index == -1)
-			error_exit();
+			return (0);
 		cur = cur->next;
 	}
+	return (1);
 }
 
 void	normalize_stack(t_stack *a)
@@ -107,6 +108,10 @@ void	normalize_stack(t_stack *a)
 	if (!arr)
 		error_exit();
 	sort_array(arr, a->size);
-	apply_normalization(a, arr, a->size);
+	if (!apply_normalization(a, arr, a->size))
+	{
+		free(arr);
+		error_exit();
+	}
 	free(arr);
 }

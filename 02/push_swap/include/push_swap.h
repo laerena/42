@@ -6,12 +6,15 @@
 /*   By: leilai <marvin@42lausanne.ch>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 15:48:47 by leilai            #+#    #+#             */
-/*   Updated: 2026/03/05 16:22:09 by leilai           ###   ########.fr       */
+/*   Updated: 2026/03/10 19:41:20 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
+
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -65,8 +68,13 @@ void	op_rrr(t_stack *a, t_stack *b);
 
 // helpers
 char	**ft_split(char const *s, char c);
-void	free_tokens(char **tokens);
 int		is_sorted(t_stack *a);
+
+//parse
+int		push_token(t_stack *a, const char *tok);
+void	free_tokens(char **tokens);
+void	parse_fail(t_stack *a, char **tokens);
+t_stack	*parse_stack_a(int ac, char **av);
 
 // sorting
 void	normalize_stack(t_stack *a);

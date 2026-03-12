@@ -21,6 +21,7 @@ SRCS = $(SRCDIR)/main.c \
        $(SRCDIR)/ops/ops_rotate.c \
        $(SRCDIR)/ops/ops_swap.c \
        $(SRCDIR)/parse/free_tokens.c \
+       $(SRCDIR)/parse/valid_tokens.c \
        $(SRCDIR)/parse/parse.c \
        $(SRCDIR)/stack/stack_clear.c \
        $(SRCDIR)/stack/stack_init.c \
