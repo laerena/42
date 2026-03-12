@@ -2,7 +2,7 @@
 
 SIZE=500
 RANGE=10000
-CHECKER=./checker
+CHECKER=./checker_linux
 
 # Build project (default algorithm = turk)
 echo "Building push_swap (default)..."
@@ -30,9 +30,15 @@ if [ "$1" = "vg" ]; then
 		./push_swap $ARG >"$TMP_OUT" 2>"$TMP_VG"
 	COUNT=$(wc -l <"$TMP_OUT" | tr -d ' ')
 	RES=$($CHECKER $ARG <"$TMP_OUT")
+
 	echo "Operations: $COUNT"
 	echo "Checker:    $RES"
-	grep -E "definitely lost|indirectly lost|possibly lost|still reachable" "$TMP_VG"
+    echo "---------------------"
+    
+    echo "Valgrind summary: "
+	if ! grep -E "definitely lost|indirectly lost|possibly lost|still reachable" "$TMP_VG"; then
+        tail -n 25 "$TMP_VG"
+    fi
 	rm -f "$TMP_OUT" "$TMP_VG"
 else
 	# Run push_swap
