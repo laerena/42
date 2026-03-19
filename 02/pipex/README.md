@@ -1,18 +1,24 @@
 
 ### `ls | wc`
 take the output of `ls`, feed it as input into `wc`
-- `ls` prints all files in the current directory, except for hidden files
+`ls` prints all files in the current directory, except for hidden files
 ```bash
 file1
 file2
 file3
 ```
-- `wc` counts the number of lines, words, and bytes in the files specified by the file parameter
+`wc` counts the number of lines, words, and bytes in the files specified by the file parameter
 ```bash
 ls | wc
-(count output of ls)
+(wc counts output of ls)
 ```
-- `|` the pipe means `stdout of command 1 -> stdin of command 2`
+the pipe `|` means
+```bash
+stdout of command 1 -> stdin of command 2
+```
+
+---
+
 
 ### `pfd[0]` vs `pfd[1]`
 When you call: 
