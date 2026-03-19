@@ -5,4 +5,3 @@ resources
 	https://medium.com/@lannur-s/pipex-42-chapter-3-mastering-execve-using-fork-f93906a79d7c
 
 	https://jan.newmarch.name/OS/l9_1.html
-

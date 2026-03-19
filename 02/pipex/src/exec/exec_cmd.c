@@ -6,7 +6,7 @@
 /*   By: leilai <leilai@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/17 17:56:24 by leilai            #+#    #+#             */
-/*   Updated: 2026/03/17 18:12:24 by leilai           ###   ########.fr       */
+/*   Updated: 2026/03/19 23:57:36 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,11 @@ void	exec_cmd(char *cmd_str, char **envp)
 
 	args = ft_split(cmd_str, ' ');
 	if (!args || !args[0])
+	{
+		free_split(args);
 		error_exit("pipex: empty command", 127); // exit code 127 for command not found
-	path = get_cmd_path(args[0], envp);
+	}
+		path = get_cmd_path(args[0], envp);
 	if (!path)
 	{
 		cmd_not_found(args[0]);
@@ -52,7 +55,7 @@ void	exec_cmd(char *cmd_str, char **envp)
 	}
 	execve(path, args, envp);
 	perror(args[0]); // only reaches here if execve failed
-	if (errorno == EACCES)
+	if (errno == EACCES)
 		clean_exec_exit(path, args, 126); //exit code 126 command found but not executable
 	else
 		clean_exec_exit(path, args, 127);

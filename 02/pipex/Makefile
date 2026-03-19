@@ -14,7 +14,10 @@ SRCS = src/main.c \
 	   src/process/wait.c \
 	   src/utils/error.c \
 	   src/utils/free.c \
-	   src/utils/string.c
+	   src/utils/string.c\
+	   src/exec/exec_cmd.c\
+	   src/exec/path.c\
+	   src/exec/ft_split.c\
 
 OBJS = $(SRCS:.c=.o)
 
@@ -30,7 +33,7 @@ clean:
 	rm -f $(OBJS)
 
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(NAME) infile outfile
 
 re: fclean all
 

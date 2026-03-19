@@ -42,7 +42,8 @@ write here ---> [ PIPE ] ---> read here
 pid_t pid = fork();
 ```
 ![alt text](image-1.png)
-parent & child the same underlying pipe
+
+parent & child with the same underlying pipe
 
 `dup2()` make newfd point to the same thing as oldfd
 ```C
