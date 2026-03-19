@@ -41,19 +41,15 @@ write here ---> [ PIPE ] ---> read here
 ```C
 pid_t pid = fork();
 ```
+parent & child with the same underlying pipe:
 ![alt text](image-1.png)
 
-parent & child with the same underlying pipe
-
-`dup2()`
+`dup2()` make newfd point to the same thing as oldfd
 ```C
 dup2(oldfd, newfd);
 ```
-make newfd point to the same thing as oldfd
 
-`execve()`
+`execve()` replaces the current process with a new program
 ```C
 execve(path, args, envp);
 ```
-replaces the current process with a new program
-
