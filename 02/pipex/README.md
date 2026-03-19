@@ -37,10 +37,23 @@ write here ---> [ PIPE ] ---> read here
    pfd[1]                      pfd[0]
 ```
 
-Fork:
+`fork()`
 ```C
 pid_t pid = fork();
 ```
 ![alt text](image-1.png)
 
 parent & child with the same underlying pipe
+
+`dup2()`
+```C
+dup2(oldfd, newfd);
+```
+make newfd point to the same thing as oldfd
+
+`execve()`
+```C
+execve(path, args, envp);
+```
+replaces the current process with a new program
+
