@@ -136,11 +136,11 @@ dup2(pfd[1], STDOUT_FILENO);
 Now everything written to stdout goes into the pipe.
 
 ### `execve()` 
+Replaces the current process with a new program
 ```C
 execve(path, args, envp);
 ```
-Replaces the current process with a new program.
-- **After execve, code disappears and becomes the command**
+**After execve, code disappears and becomes the command.**
 
 ### `envp` and `PATH`
 
