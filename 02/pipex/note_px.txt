@@ -1,7 +1,0 @@
-
-resources
-	https://medium.com/@lannur-s/pipex-42-chapter-1-metamorphosis-execve-1a4710ab8cb1
-	https://medium.com/@lannur-s/what-is-a-fork-e0b74e4bb821
-	https://medium.com/@lannur-s/pipex-42-chapter-3-mastering-execve-using-fork-f93906a79d7c
-
-	https://jan.newmarch.name/OS/l9_1.html

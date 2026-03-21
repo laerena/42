@@ -36,12 +36,14 @@ make
 ```
 Basic test
 ```bash
+echo -e "apple\nbanana\navocado" > infile
 ./pipex infile "grep a" "wc -l" outfile
+cat outfile
 ```
 Compare with shell
 ```bash
 ./pipex infile "grep a" "wc -l" outfile1
-< indile grep a | wc -l > outfile2
+< infile grep a | wc -l > outfile2
 diff outfile1 outfile2
 ```
 Edge cases
