@@ -34,7 +34,6 @@ make
 ```bash
 ./pipex file1 "cmd1" "cmd2" file2
 ```
-```
 Basic test
 ```bash
 ./pipex infile "grep a" "wc -l" outfile
@@ -50,7 +49,7 @@ Edge cases
 ./pipex nofile "grep a" "wc -l" outfile
 ./pipex infile "fakecmd" "wc -l" outfile
 ```
-Also test:
+Also:
 ```bash
 ./pipex infile "grep a1" "wc -w" outfile
 ./pipex infile "ls -l" "wc -l" outfile
@@ -68,8 +67,15 @@ The program takes 4 arguments:
 It must behave exactly like a shell pipeline.
 
 ---
+## Core Concepts
 
-## How a Pipe Works
+### File Descriptors
+Every process uses file descriptors:
+- `0` → stdin
+- `1` → stdout
+- `2` → stderr
+
+Pipex works by redirecting these descriptors.
 
 ### `ls | wc`
 take the output of `ls`, feed it as input into `wc`
@@ -93,19 +99,7 @@ ls | wc
 ```
 `wc counts output of ls`
 
----
-
-## Core Concepts
-
-### File Descriptors
-Every process uses file descriptors:
-- `0` → stdin
-- `1` → stdout
-- `2` → stderr
-
-Pipex works by redirecting these descriptors.
-
-### Pipe: `pfd[0]` vs `pfd[1]`
+### `pfd[0]` vs `pfd[1]`
 When you call: 
 ```C
 int pfd[2];
@@ -123,9 +117,6 @@ write here ---> [ PIPE ] ---> read here
 ```C
 pid_t pid = fork();
 ```
-Creates a new process:
-- parent process
-- child process
 ![alt text](image-1.png)
 
 Shown parent & child with the same underlying pipe
@@ -142,15 +133,16 @@ Redirects file desciptors, make newfd point to the same thing as oldfd.
 ```C
 dup2(pfd[1], STDOUT_FILENO);
 ```
+Now everything written to stdout goes into the pipe.
 
 ### `execve()` 
 ```C
 execve(path, args, envp);
 ```
 Replaces the current process with a new program.
-**After execve, code disappears and becomes the command**
+- **After execve, code disappears and becomes the command**
 
-### `envp` and PATH
+### `envp` and `PATH`
 
 `envp` contains environment variables:
 ```bash
@@ -218,12 +210,13 @@ The project is structured into layers:
 ---
 
 ## Resources
-	https://medium.com/@lannur-s
-	pipex-42-chapter-1-metamorphosis-execve-1a4710ab8cb1
-	https://medium.com/@lannur-s/what-is-a-fork-e0b74e4bb821
-	https://medium.com/@lannur-s/pipex-42-chapter-3-mastering-execve-using-fork-f93906a79d7c
+https://medium.com/@lannur-s/pipex-42-chapter-1-metamorphosis-execve-1a4710ab8cb1
+https://medium.com/@lannur-s/what-is-a-fork-e0b74e4bb821
+https://medium.com/@lannur-s/pipex-42-chapter-3-mastering-execve-using-fork-f93906a79d7c
 
-	https://jan.newmarch.name/OS/l9_1.html
+https://jan.newmarch.name/OS/l9_1.html
+
+---
 
 ## AI Usage
 
