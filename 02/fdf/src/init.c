@@ -6,7 +6,7 @@
 /*   By: leilai <leilai@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 17:24:54 by leilai            #+#    #+#             */
-/*   Updated: 2026/03/22 17:24:55 by leilai           ###   ########.fr       */
+/*   Updated: 2026/03/22 20:09:13 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void	init_view(t_app *app)
 	app->view.scale = w_scale;
 	if (h_scale < app->view.scale)
 		app->view.scale = h_scale;
-	if (app->view.scale < 2.0)
-		app->view.scale = 2.0;
+	if (app->view.scale < 1.0)
+		app->view.scale = 1.0;
 	app->view.z_scale = app->view.scale / 2.0;
 	app->view.angle = ISO_ANGLE;
 	app->view.shift_x = WIN_W / 2;

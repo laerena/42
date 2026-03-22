@@ -6,7 +6,7 @@
 /*   By: leilai <leilai@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 17:24:15 by leilai            #+#    #+#             */
-/*   Updated: 2026/03/22 17:24:16 by leilai           ###   ########.fr       */
+/*   Updated: 2026/03/22 20:08:53 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,8 @@ int	main(int argc, char **argv)
 	if (!init_app(&app))
 		exit_error("Error: mlx init failed\n", &app);
 	init_view(&app);
-	render_scene(&app);
-	mlx_hook(app.win, 2, 0, key_hook, &app);
-	mlx_hook(app.win, 17, 0, close_hook, &app);
+	mlx_hook(app.win, KeyPress, KeyPressMask, key_hook, &app);
+	mlx_hook(app.win, DestroyNotify, StructureNotifyMask, close_hook, &app);
 	mlx_expose_hook(app.win, expose_hook, &app);
 	mlx_loop(app.mlx);
 	return (0);
