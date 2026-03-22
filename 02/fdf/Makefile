@@ -7,7 +7,7 @@ SRC_DIR = src
 INC_DIR = include
 LIBFT_DIR = libft
 GNL_DIR = GNL
-MLX_DIR = minilibx_macos
+MLX_DIR = minilibx-linux
 
 SRC = \
 	$(SRC_DIR)/main.c \
