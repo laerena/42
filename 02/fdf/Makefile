@@ -1,13 +1,13 @@
 NAME = fdf
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I/usr/include -Imlx_linux -Iincludes
 
 SRC_DIR = src
 INC_DIR = include
 LIBFT_DIR = libft
-GNL_DIR = GNL
-MLX_DIR = minilibx-linux
+GNL_DIR = gnl
+MLX_DIR = mlx_linux
 
 SRC = \
 	$(SRC_DIR)/main.c \
@@ -25,15 +25,14 @@ SRC = \
 
 OBJ = $(SRC:.c=.o)
 
-INCLUDES = -I$(INC_DIR) -I$(LIBFT_DIR) -I$(GNL_DIR) -I$(MLX_DIR)
-LIBS = -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx -lm
+INCLUDES = -I$(INC_DIR) -I$(LIBFT_DIR) -I$(GNL_DIR) -I/usr/include -I$(MLX_DIR)
+LIBS = -L$(LIBFT_DIR) -lft -L$(MLX_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(MAKE) -C $(LIBFT_DIR)
 	$(MAKE) -C $(MLX_DIR)
-	cp -f $(MLX_DIR)/libmlx.dylib .
 	$(CC) $(CFLAGS) $(OBJ) $(INCLUDES) $(LIBS) -o $(NAME)
 
 %.o: %.c
@@ -46,7 +45,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f libmlx.dylib
 	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
