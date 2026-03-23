@@ -6,7 +6,7 @@
 /*   By: leilai <leilai@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 17:24:49 by leilai            #+#    #+#             */
-/*   Updated: 2026/03/22 17:43:05 by leilai           ###   ########.fr       */
+/*   Updated: 2026/03/23 17:06:59 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,8 @@ void	destroy_mlx(t_app *app)
 		mlx_destroy_image(app->mlx, app->img.ptr);
 	if (app->win)
 		mlx_destroy_window(app->mlx, app->win);
-#ifdef __linux__
 	mlx_destroy_display(app->mlx);
 	free(app->mlx);
-#endif
 	app->mlx = NULL;
 	app->win = NULL;
 	app->img.ptr = NULL;

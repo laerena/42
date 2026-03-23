@@ -6,7 +6,7 @@
 /*   By: leilai <leilai@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 17:24:58 by leilai            #+#    #+#             */
-/*   Updated: 2026/03/22 17:24:59 by leilai           ###   ########.fr       */
+/*   Updated: 2026/03/23 16:40:26 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,23 @@ static int	abs_i(int n)
 	if (n < 0)
 		return (-n);
 	return (n);
+}
+
+/*
+** Return 1 if the whole line is definitely outside the screen
+** on the same side, so there is nothing useful to draw.
+*/
+static int	line_outside_screen(t_point a, t_point b)
+{
+	if (a.x < 0 && b.x < 0)
+		return (1);
+	if (a.x >= WIN_W && b.x >= WIN_W)
+		return (1);
+	if (a.y < 0 && b.y < 0)
+		return (1);
+	if (a.y >= WIN_H && b.y >= WIN_H)
+		return (1);
+	return (0);
 }
 
 // prep all values the algorithm will update while drawing
@@ -59,6 +76,8 @@ void	draw_line(t_img *img, t_point a, t_point b)
 {
 	t_line	line;
 
+	if (line_outside_screen(a, b))
+		return ;
 	init_line(&line, a, b);
 	while (1)
 	{

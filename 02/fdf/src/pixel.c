@@ -6,7 +6,7 @@
 /*   By: leilai <leilai@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 17:47:43 by leilai            #+#    #+#             */
-/*   Updated: 2026/03/22 17:49:15 by leilai           ###   ########.fr       */
+/*   Updated: 2026/03/23 17:07:31 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ void	put_pixel(t_img *img, int x, int y, int color)
 
 void	clear_image(t_img *img, int color)
 {
-	int	x;
-	int	y;
+	int				x;
+	int				y;
+	unsigned int	*row;
 
 	y = 0;
 	while (y < WIN_H)
 	{
+		row = (unsigned int *)(img->addr + y * img->line_len);
 		x = 0;
 		while (x < WIN_W)
 		{

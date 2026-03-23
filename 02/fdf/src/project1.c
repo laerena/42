@@ -93,7 +93,7 @@ void	fit_view_to_window(t_app *app)
 
 	margin = 50.0;
 	app->view.scale = 1.0;
-	app->view.z_scale = 1.0;
+	app->view.z_scale = 0.5;
 	b = get_projected_bounds(app);
 	model_w = b.max_x - b.min_x;
 	model_h = b.max_y - b.min_y;
