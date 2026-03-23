@@ -6,7 +6,7 @@
 /*   By: leilai <leilai@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 16:54:48 by leilai            #+#    #+#             */
-/*   Updated: 2026/03/22 17:43:23 by leilai           ###   ########.fr       */
+/*   Updated: 2026/03/23 16:19:02 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,19 @@ void	clear_image(t_img *img, int color);
 // projection
 t_point	project_point(t_app *app, int x, int y);
 int		get_color(int z);
+
+// add
+typedef struct s_bounds
+{
+	double	min_x;
+	double	max_x;
+	double	min_y;
+	double	max_y;
+}	t_bounds;
+
+t_point			project_raw(t_app *app, int x, int y);
+void			fit_view_to_window(t_app *app);
+
 
 // lines
 void	draw_line(t_img *img, t_point a, t_point b);

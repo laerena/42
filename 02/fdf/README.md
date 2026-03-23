@@ -41,7 +41,7 @@ make
 
 The program takes a single argument:
 
-* a `.fdf` file describing a grid of height values
+* `.fdf` file describing a grid of height values
 
 Each number represents:
 
@@ -60,6 +60,7 @@ The program:
 
 ## Core Concepts
 
+
 ### Data Representation
 
 The map is stored as a 2D array:
@@ -70,7 +71,6 @@ int **z;
 
 Each value represents height at position `(x, y)`.
 
----
 
 ### Projection (3D → 2D)
 
@@ -83,7 +83,7 @@ py = (x + y) * sin(angle) - z;
 
 This creates a 3D illusion without perspective distortion.
 
----
+
 
 ### Line Drawing (Bresenham Algorithm)
 
@@ -91,7 +91,7 @@ Lines between points are drawn pixel by pixel using an integer-based algorithm.
 
 This avoids floating point errors and ensures efficient rendering.
 
----
+
 
 ### MiniLibX (Graphics Engine)
 
@@ -121,8 +121,6 @@ mlx_get_data_addr()
 
 Pixels are written into memory first, then displayed.
 
-👉 Important:
-
 > The program does NOT draw directly to the window.
 > It draws into an image buffer, then pushes the result.
 
@@ -134,7 +132,7 @@ MiniLibX uses **event-driven programming**:
 * a **hook** = function called when that event occurs
 * a **loop** = system that waits and dispatches events
 
-Example from this project:
+Example:
 
 ```c
 mlx_hook(win, KeyPress, ..., key_hook, &app);
@@ -149,7 +147,7 @@ mlx_loop(mlx);
 
 This keeps the program alive and handles events.
 
----
+
 
 ### Rendering Pipeline
 
@@ -159,13 +157,6 @@ The rendering follows this structure:
 map → project points → draw lines → write pixels → display image
 ```
 
-From the code:
-
-* project points → `project_point()` 
-* draw lines → `draw_line()` 
-* render → `render_scene()` 
-
----
 
 ### Program State
 
@@ -183,7 +174,7 @@ This includes:
 * map data
 * view parameters
 
-👉 This is essential because:
+Essential because:
 
 * hooks receive a pointer to this structure
 * all rendering and interaction depend on it
@@ -263,10 +254,10 @@ The project is structured into layers:
   https://harm-smits.github.io/42docs/libs/minilibx
 
 * Bresenham algorithm
-  https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm
+  https://www.geeksforgeeks.org/dsa/bresenhams-line-generation-algorithm/
 
 * Isometric projection
-  https://en.wikipedia.org/wiki/Isometric_projection
+  https://github.com/f-corvaro/FDF?tab=readme-ov-file
 
 ---
 

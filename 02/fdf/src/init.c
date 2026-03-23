@@ -6,7 +6,7 @@
 /*   By: leilai <leilai@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 17:24:54 by leilai            #+#    #+#             */
-/*   Updated: 2026/03/22 20:09:13 by leilai           ###   ########.fr       */
+/*   Updated: 2026/03/23 17:05:30 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,17 @@ int	init_app(t_app *app)
 		return (destroy_mlx(app), 0);
 	return (1);
 }
+/*
+void	init_view(t_app *app)
+{
+	app->view.angle = ISO_ANGLE;
+	app->view.scale = 1.0;
+	app->view.z_scale = 1.0;
+	app->view.shift_x = 0;
+	app->view.shift_y = 0;
+	fit_view_to_window(app);
+}
+*/
 
 /*
 ** the view stores how large the map should appear
@@ -62,20 +73,25 @@ void	init_view(t_app *app)
 	double	w_scale;
 	double	h_scale;
 
+	// use the bigger map dimension as a rough reference size
 	size = app->map.width;
 	if (app->map.height > size)
 		size = app->map.height;
 	if (size < 1)
 		size = 1;
+	
+	// estimate how much we can zoom while keeping the map inside of the window
+	// rn it only uses raw width/height, 
+	// not the true projected size after isometric transform
 	w_scale = (double)(WIN_W / 3) / size; // only use about 1/3 of the window
 	h_scale = (double)(WIN_H / 3) / size;
 	app->view.scale = w_scale;
 	if (h_scale < app->view.scale)
-		app->view.scale = h_scale;
-	if (app->view.scale < 1.0)
-		app->view.scale = 1.0;
-	app->view.z_scale = app->view.scale / 2.0;
+		app->view.scale = h_scale; // choose the zoom that fits both height and width constraints
+	if (app->view.scale < 0.2)
+		app->view.scale = 0.2; // never zoomout below 1 may be problematic as it is a hard floor
+	app->view.z_scale = app->view.scale / 4.0;
 	app->view.angle = ISO_ANGLE;
-	app->view.shift_x = WIN_W / 2;
-	app->view.shift_y = WIN_H / 4;
+	app->view.shift_x = WIN_W / 2; // horizontal shift
+	app->view.shift_y = WIN_H / 2; // vertical shift
 }
