@@ -6,7 +6,7 @@
 /*   By: leilai <leilai@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/22 17:24:54 by leilai            #+#    #+#             */
-/*   Updated: 2026/03/23 17:05:30 by leilai           ###   ########.fr       */
+/*   Updated: 2026/03/23 17:20:59 by leilai           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	init_view(t_app *app)
 		size = app->map.height;
 	if (size < 1)
 		size = 1;
-	
+
 	// estimate how much we can zoom while keeping the map inside of the window
 	// rn it only uses raw width/height, 
 	// not the true projected size after isometric transform

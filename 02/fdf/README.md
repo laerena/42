@@ -80,7 +80,6 @@ The program uses **isometric projection**:
 px = (x - y) * cos(angle);
 py = (x + y) * sin(angle) - z;
 ```
-
 This creates a 3D illusion without perspective distortion.
 
 
@@ -88,6 +87,14 @@ This creates a 3D illusion without perspective distortion.
 ### Line Drawing (Bresenham Algorithm)
 
 Lines between points are drawn pixel by pixel using an integer-based algorithm.
+
+Implemented in `draw_line()`:
+
+Bresenham only use integers to decided step-by-step which direction to go next for drawing a line.
+It uses `err` to detect "how far off the perfect line we are currently drawing"
+```c
+line->err = line->dx - line->dy
+```
 
 This avoids floating point errors and ensures efficient rendering.
 
@@ -102,29 +109,25 @@ MiniLibX is a minimal graphics library used to:
 * draw pixels
 * handle events
 
-#### Key Concepts
-
-##### Window
+#### Window
 
 ```c
 mlx_new_window()
 ```
-
 Creates the visible display.
 
-##### Image Buffer
+#### Image Buffer
 
 ```c
 mlx_new_image()
 mlx_get_data_addr()
 ```
-
 Pixels are written into memory first, then displayed.
 
 > The program does NOT draw directly to the window.
 > It draws into an image buffer, then pushes the result.
 
-##### Event System
+#### Event System
 
 MiniLibX uses **event-driven programming**:
 
@@ -139,14 +142,13 @@ mlx_hook(win, KeyPress, ..., key_hook, &app);
 mlx_hook(win, DestroyNotify, ..., close_hook, &app);
 ```
 
-##### Main Loop
+#### Main Loop
 
 ```c
 mlx_loop(mlx);
 ```
 
 This keeps the program alive and handles events.
-
 
 
 ### Rendering Pipeline
@@ -270,5 +272,3 @@ AI tools were used as a learning aid for:
 * clarifying graphics programming fundamentals
 
 All implementation, debugging, and design decisions were completed independently.
-
-git@vogsphere.42lausanne.ch:vogsphere/intra-uuid-62ecb1eb-0f03-4d10-bd46-24de9dc90b76-7327016-leilai
