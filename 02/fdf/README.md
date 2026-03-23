@@ -91,10 +91,6 @@ Lines between points are drawn pixel by pixel using an integer-based algorithm.
 Implemented in `draw_line()`:
 
 Bresenham only use integers to decided step-by-step which direction to go next for drawing a line.
-It uses `err` to detect "how far off the perfect line we are currently drawing"
-```c
-line->err = line->dx - line->dy
-```
 
 This avoids floating point errors and ensures efficient rendering.
 
